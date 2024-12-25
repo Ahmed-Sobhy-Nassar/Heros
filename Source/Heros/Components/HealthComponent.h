@@ -7,6 +7,7 @@
 #include "HealthComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDead);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHealthChanged);
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class HEROS_API UHealthComponent : public UActorComponent
 {
@@ -20,6 +21,8 @@ public:
 	// Events
 	UPROPERTY(BlueprintAssignable, Category = "Health")
 	FOnDead OnDead;
+	UPROPERTY(BlueprintAssignable, Category = "Health")
+	FOnHealthChanged OnHealthChanged;
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void OnConsumHealth(float Amount);
 	UFUNCTION(BlueprintCallable, Category = "Health")
