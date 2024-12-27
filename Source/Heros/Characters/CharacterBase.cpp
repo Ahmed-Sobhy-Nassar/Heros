@@ -91,7 +91,6 @@ void ACharacterBase::HandleHungerDepleted()
 {
 	if (!StaminaComponent) return;
 	StaminaComponent->StartStaminaDrain();
-	StaminaComponent->OnStmainaCosumed();
 }
 void ACharacterBase::HandleHungerRecover()
 {  

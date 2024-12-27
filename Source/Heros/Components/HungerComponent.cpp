@@ -25,8 +25,7 @@ void UHungerComponent::DecayHunger()
 {
     if (CurrentHunger > 0.f)
     {
-        CurrentHunger -= HungerDecayRate;
-        CurrentHunger = FMath::Clamp(CurrentHunger, 0.f, MaxHunger);
+        CurrentHunger = FMath::Clamp(CurrentHunger-HungerDecayRate, 0.f, MaxHunger);
 
         if (CurrentHunger == 0.f && !bIsHungerZero)
         {

@@ -8,6 +8,8 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStaminaDepleted);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStaminaRecovered);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStaminaChanged);
+
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class HEROS_API UStaminaComponent : public UActorComponent
@@ -47,7 +49,7 @@ public:
     // Stamina management
    
     UFUNCTION(BlueprintCallable, Category = "Stamina")
-    void OnStmainaCosumed();
+    bool OnStaminaCosumed();
 
     UFUNCTION(BlueprintCallable, Category = "Stamina")
     void RecoverStamina(float Amount);
@@ -71,5 +73,8 @@ public:
 
     UPROPERTY(BlueprintAssignable, Category = "Stamina")
     FOnStaminaRecovered OnStaminaRecovered;
+
+    UPROPERTY(BlueprintAssignable, Category = "Stamina")
+    FOnStaminaChanged OnStaminaChanged;
 		
 };

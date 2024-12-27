@@ -16,10 +16,15 @@ UStaminaComponent::UStaminaComponent()
 }
 
 
-void UStaminaComponent::OnStmainaCosumed()
+bool UStaminaComponent::OnStaminaCosumed()
 {
     if (CurrentStamina <= 0.f)
+    {
+        bIsStaminaDepleted = false;
         DrainStamina();
+        return true;
+    }
+    return false;
 }
 
 // Recovers stamina
@@ -61,11 +66,12 @@ void UStaminaComponent::DrainStamina()
     {
         return; // Do nothing if stamina is already depleted
     }
-
+    
     // Reduce stamina
     CurrentStamina = FMath::Clamp(CurrentStamina - StaminaDrainAmount, 0.f, MaxStamina);
 
     // Check if stamina has been depleted
+   
     if (CurrentStamina <= 0.f)
     {
         bIsStaminaDepleted = true;
